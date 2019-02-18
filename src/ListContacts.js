@@ -3,15 +3,25 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
+import * as ContactsAPI from './ContactsAPI'
 
 class ListContacts extends Component {
   static propTypes = {
-    contacts: PropTypes.array.isRequired,
+   // contacts: PropTypes.array.isRequired,
     onDeleteContact: PropTypes.func.isRequired
   }
 
   state = {
-    query: ''
+    query: '',
+    screen: 'list',
+    contacts: []
+
+  }
+
+  componentDidMount() {
+      ContactsAPI.getAll().then((contacts) => {
+        this.setState({contacts})
+      })
   }
 
   updateQuery = (query) => {
@@ -28,8 +38,8 @@ class ListContacts extends Component {
   }
 
   render() {
-    const {contacts, onDeleteContact} = this.props
-    const { query }  = this.state
+    const {onDeleteContact} = this.props
+    const { contacts,query }  = this.state
 
     let shownContact
     if (query) {

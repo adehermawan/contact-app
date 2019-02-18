@@ -26,7 +26,7 @@ class EditContact extends Component {
       age: item.age,
       photo: item.photo
     }
-    ContactsAPI.edit(item.id,listData)
+    await ContactsAPI.edit(item.id,listData)
     this.props.history.push('/');
   }
 

@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import serializeForm from 'form-serialize'
+import * as ContactsAPI from './ContactsAPI'
 class AddContact extends Component {
-  handleSubmit = (e) => {
+    handleSubmit = (e) => {
     e.preventDefault()
     const val = serializeForm(e.target, {hash: true})
-    if (this.props.onCreateContact)
-      this.props.onCreateContact(val)
+    ContactsAPI.create(val)
+    this.props.history.push('/');
   }
   render() {
     return (
