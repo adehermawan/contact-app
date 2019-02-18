@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import serializeForm from 'form-serialize'
 import * as ContactsAPI from './ContactsAPI'
 class EditContact extends Component {
   emptyItem = {

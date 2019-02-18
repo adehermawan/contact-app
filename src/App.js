@@ -17,20 +17,19 @@ class App extends Component {
       })
   }
 
+  componentDidUpdate() {
+    ContactsAPI.getAll().then((contacts) => {
+      this.setState({contacts})
+    })
+}
+
+
   removeContact = (contact) => {
     this.setState((state) => ({
         contacts: state.contacts.filter((c)=> c.id !== contact.id)
     }))
 
     ContactsAPI.remove(contact)
-  }
-
-  editContact = (contact) => {
-    this.setState((state) => ({
-        contacts: state.contacts.filter((c)=> c.id !== contact.id)
-    }))
-
-    ContactsAPI.edit(contact)
   }
 
   createContact = (contact) => {
