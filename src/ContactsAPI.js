@@ -1,4 +1,4 @@
-const api = process.env.REACT_APP_CONTACTS_API_URL || 'https://simple-contact-crud.herokuapp.com'
+const api = 'https://simple-contact-crud.herokuapp.com'
 
 const headers = {
   'Accept': 'application/json',
