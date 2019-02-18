@@ -17,13 +17,6 @@ class App extends Component {
       })
   }
 
-  componentDidUpdate() {
-    ContactsAPI.getAll().then((contacts) => {
-      this.setState({contacts})
-    })
-}
-
-
   removeContact = (contact) => {
     this.setState((state) => ({
         contacts: state.contacts.filter((c)=> c.id !== contact.id)
@@ -42,7 +35,7 @@ class App extends Component {
   render() {
     return (<div className="app">
       <Route exact path="/" render = {() => (
-        <ListContacts contacts = {this.state.contacts} onDeleteContact = {this.removeContact} onEditContact = {this.editContact}
+        <ListContacts contacts = {this.state.contacts} onDeleteContact = {this.removeContact}
         onNavigate = {() => {
           this.setState({screen: 'AddContact'})
         }} />
